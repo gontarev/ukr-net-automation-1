@@ -13,7 +13,7 @@ public class MailCreateDeleteTest extends BaseTest {
 
     @Before
     public void setUp() {
-        user = new User("selenium3", "FAm58ArwG4$9UU$3");
+        user = new User("xxxx", "yyyyyy");
         mail = new Mail(user).setSubject("Demo Letter").setBody("Hi There");
     }
 
