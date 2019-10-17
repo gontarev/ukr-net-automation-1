@@ -4,16 +4,7 @@ import net.ukr.automation.selenium.pages.data.Mail;
 import net.ukr.automation.selenium.pages.data.User;
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.After;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.is;
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MailCreateDeleteTest extends BaseTest {
     private User user;
@@ -29,7 +20,7 @@ public class MailCreateDeleteTest extends BaseTest {
     @Test
     public void createDeleteTest() {
         app.login(user);
-//        sendNewMail();
+        app.sendNewMail(mail);
 //        checkMailIsReceived();
 //        deleteMail();
 //        cleanUpDeleted();
