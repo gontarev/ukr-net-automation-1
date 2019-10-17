@@ -11,35 +11,33 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClick
 public class LoginPage extends Page {
 
     @FindBy(id = "id-l")
-    private WebElement login;
+    private WebElement loginFld;
 
     @FindBy(id = "id-p")
-    private WebElement password;
+    private WebElement passwordFld;
 
     @FindBy(css = "button[type='submit']")
-    private WebElement submit;
+    private WebElement submitBtn;
 
     @FindBy(css = "button.default.compose")
     private WebElement composeBtn;
 
-    public LoginPage(WebDriver driver)
-    {
+    public LoginPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-
     }
 
-    public void open()
-    {
+    public void open() {
         driver.get(baseUrl);
     }
 
-    public void login(User user)
-    {
+    public void login(User user) {
         open();
-        login.sendKeys(user.getLogin());
-        password.sendKeys(user.getPassword());
-        submit.click();
-        wait.until(elementToBeClickable(composeBtn));
+        if (driver.getCurrentUrl().contains("/login")) {
+            loginFld.sendKeys(user.getLogin());
+            passwordFld.sendKeys(user.getPassword());
+            submitBtn.click();
+            wait.until(elementToBeClickable(composeBtn));
+        }
     }
 }

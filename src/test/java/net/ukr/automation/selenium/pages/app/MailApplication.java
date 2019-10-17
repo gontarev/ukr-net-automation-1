@@ -48,4 +48,32 @@ public class MailApplication {
     public MailListPage getMailList() {
         return mailList;
     }
+
+    public void openMessage(Mail mail) {
+        mailList.openMail(mail);
+    }
+
+    public void deleteCurrentMail() {
+        mailList.deleteCurrentMail();
+    }
+
+    public void cleanUpDeletedFolder() {
+        mailList.cleanUpDeletedFolder();
+    }
+
+    public void cleanUpFolder() {
+        mailList.cleanUpFolder();
+    }
+
+    public void openInbox() {
+        sideBar.openInbox();
+    }
+
+    public void openDeleted() {
+        sideBar.openDeleted();
+    }
+
+    public void openSentItems() {
+        sideBar.openSentItems();
+    }
 }

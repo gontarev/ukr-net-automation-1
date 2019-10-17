@@ -25,4 +25,10 @@ public class SideBarPage extends Page {
     {
         wait.until(elementToBeClickable(By.cssSelector("#\\31 0004 > .sidebar__list-link-name"))).click();
     }
+
+    public void openSentItems()
+    {
+        wait.until(elementToBeClickable(By.cssSelector("#\\31 0001 > .sidebar__list-link-name"))).click();
+    }
+
 }
