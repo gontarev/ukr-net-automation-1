@@ -37,10 +37,23 @@ public class MailCreateDeleteTest {
 
     @Test
     public void createDeleteTest() {
+        login();
+        sendNewMail();
+        checkMailIsReceived();
+        deleteMail();
+        cleanUpDeleted();
+    }
+
+
+    private void login() {
         driver.get("https://accounts.ukr.net/login");
         driver.findElement(By.id("id-l")).sendKeys(user.getLogin());
         driver.findElement(By.id("id-p")).sendKeys(user.getPassword());
         driver.findElement(By.cssSelector("button[type='submit']")).click();
+
+    }
+
+    private void sendNewMail() {
         wait.until(elementToBeClickable(By.cssSelector("button.default.compose"))).click();
         wait.until(elementToBeClickable(By.name("toFieldInput"))).sendKeys(mail.getUser().getMail());
         driver.findElement(By.name("subject")).sendKeys(mail.getSubject());
@@ -49,14 +62,25 @@ public class MailCreateDeleteTest {
         driver.switchTo().defaultContent();
         driver.findElement(By.cssSelector(".send")).click();
         assertThat(wait.until(elementToBeClickable(By.cssSelector(".sendmsg__ads-ready"))).getText(), is("Ваш лист надіслано\nНаписати щеПовернутись у вхідні"));
+
+    }
+
+    private void checkMailIsReceived() {
         driver.findElement(By.cssSelector("#\\30 > .sidebar__list-link-name")).click();
         assertThat(wait.until(elementToBeClickable(By.cssSelector("td.msglist__row-subject"))).getText().trim(), is(mail.getSubjAndBodyLine()));
         driver.findElement(By.cssSelector(".msglist__row-address-wrap")).click();
         assertThat(wait.until(elementToBeClickable(By.cssSelector(".xfmc1"))).getText(), is(mail.getBody()));
+    }
+
+    private void deleteMail() {
         driver.findElement(By.linkText("Видалити")).click();
+    }
+
+    private void cleanUpDeleted() {
         wait.until(elementToBeClickable(By.cssSelector("#\\31 0004 > .sidebar__list-link-name"))).click();
         wait.until(elementToBeClickable(By.cssSelector(".msglist__checkbox .checkbox span"))).click();
         wait.until(elementToBeClickable(By.linkText("Видалити назавжди"))).click();
         assertThat(wait.until(elementToBeClickable(By.cssSelector(".msglist__empty > td"))).getText(), is("В цій папці немає листів\nВи можете створити фільтр для автоматичного переміщення листів у цю папку"));
     }
+
 }
