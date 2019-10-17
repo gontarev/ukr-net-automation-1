@@ -22,32 +22,36 @@ public class MailCreateDeleteTest extends BaseTest {
     public void createDeleteTest() {
         app.login(user);
         app.sendNewMail(mail);
-        app.getSideBar().openInbox();
+        app.openInbox();
+
         Assert.assertTrue(app.getMailList().isMailPresentInFolder(mail));
 
-//        checkMailIsReceived();
-//        deleteMail();
-//        cleanUpDeleted();
+        app.openMessage(mail);
+
+        Assert.assertTrue(app.getMailList().isBodyEqualTo(mail.getBody()));
+
+        app.deleteCurrentMail();
+        app.openDeleted();
+
+        Assert.assertTrue(app.getMailList().isMailPresentInFolder(mail));
+
+        app.cleanUpDeletedFolder();
+
+        Assert.assertTrue(app.getMailList().isDeletedFolderEmpty());
+
+
     }
 
+    @Test
+    public void newTest()
+    {
+        app.login(user);
+        app.sendNewMail(mail);
+        app.openSentItems();
+        app.cleanUpFolder();
 
-//
-//    private void checkMailIsReceived() {
-//
-//        assertThat(wait.until(elementToBeClickable(By.cssSelector("td.msglist__row-subject"))).getText().trim(), is(mail.getSubjAndBodyLine()));
-//        driver.findElement(By.cssSelector(".msglist__row-address-wrap")).click();
-//        assertThat(wait.until(elementToBeClickable(By.cssSelector(".xfmc1"))).getText(), is(mail.getBody()));
-//    }
-//
-//    private void deleteMail() {
-//        driver.findElement(By.linkText("Видалити")).click();
-//    }
-//
-//    private void cleanUpDeleted() {
-//
-//        wait.until(elementToBeClickable(By.cssSelector(".msglist__checkbox .checkbox span"))).click();
-//        wait.until(elementToBeClickable(By.linkText("Видалити назавжди"))).click();
-//        assertThat(wait.until(elementToBeClickable(By.cssSelector(".msglist__empty > td"))).getText(), is("В цій папці немає листів\nВи можете створити фільтр для автоматичного переміщення листів у цю папку"));
-//    }
+        Assert.assertTrue(app.getMailList().isFolderEmpty());
+
+    }
 
 }
