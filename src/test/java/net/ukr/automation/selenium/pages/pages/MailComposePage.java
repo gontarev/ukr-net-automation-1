@@ -15,7 +15,6 @@ public class MailComposePage extends Page {
 
     public void composeAndSendNewMail(Mail mail)
     {
-        wait.until(elementToBeClickable(By.cssSelector("button.default.compose"))).click();
         wait.until(elementToBeClickable(By.name("toFieldInput"))).sendKeys(mail.getUser().getMail());
         driver.findElement(By.name("subject")).sendKeys(mail.getSubject());
         driver.switchTo().frame(1);
