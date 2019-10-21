@@ -31,6 +31,7 @@ public class MailApplication {
 
     public void login(User user)
     {
+        loginPage.open();
         loginPage.login(user);
     }
 

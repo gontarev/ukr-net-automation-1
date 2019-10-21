@@ -32,7 +32,6 @@ public class LoginPage extends Page {
     }
 
     public void login(User user) {
-        open();
         if (driver.getCurrentUrl().contains("/login")) {
             loginFld.sendKeys(user.getLogin());
             passwordFld.sendKeys(user.getPassword());
