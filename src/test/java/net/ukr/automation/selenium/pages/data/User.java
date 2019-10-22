@@ -28,4 +28,10 @@ public class User {
     public String getMail() {
         return login + "@ukr.net";
     }
+
+    @Override
+    public String toString()
+    {
+        return login +"/"+password;
+    }
 }

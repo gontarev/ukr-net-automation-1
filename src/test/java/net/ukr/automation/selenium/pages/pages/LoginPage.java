@@ -1,5 +1,6 @@
 package net.ukr.automation.selenium.pages.pages;
 
+import io.qameta.allure.Step;
 import net.ukr.automation.selenium.pages.data.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,10 +28,12 @@ public class LoginPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
+    @Step
     public void open() {
         driver.get(baseUrl);
     }
 
+    @Step
     public void login(User user) {
         if (driver.getCurrentUrl().contains("/login")) {
             loginFld.sendKeys(user.getLogin());

@@ -1,5 +1,6 @@
 package net.ukr.automation.selenium.pages.app;
 
+import io.qameta.allure.Step;
 import net.ukr.automation.selenium.pages.data.Mail;
 import net.ukr.automation.selenium.pages.data.User;
 import net.ukr.automation.selenium.pages.pages.LoginPage;
@@ -25,16 +26,22 @@ public class MailApplication {
         mailList = new MailListPage(driver);
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     public void quit() {
         driver.quit();
     }
 
+    @Step
     public void login(User user)
     {
         loginPage.open();
         loginPage.login(user);
     }
 
+    @Step
     public void sendNewMail(Mail mail)
     {
         sideBar.clickOnWriteNewLetter();
@@ -49,32 +56,32 @@ public class MailApplication {
     public MailListPage getMailList() {
         return mailList;
     }
-
+    @Step
     public void openMessage(Mail mail) {
         mailList.openMail(mail);
     }
 
-    public void deleteCurrentMail() {
+    @Step public void deleteCurrentMail() {
         mailList.deleteCurrentMail();
     }
 
-    public void cleanUpDeletedFolder() {
+    @Step public void cleanUpDeletedFolder() {
         mailList.cleanUpDeletedFolder();
     }
 
-    public void cleanUpFolder() {
+    @Step public void cleanUpFolder() {
         mailList.cleanUpFolder();
     }
 
-    public void openInbox() {
+    @Step public void openInbox() {
         sideBar.openInbox();
     }
 
-    public void openDeleted() {
+    @Step public void openDeleted() {
         sideBar.openDeleted();
     }
 
-    public void openSentItems() {
+    @Step public void openSentItems() {
         sideBar.openSentItems();
     }
 }

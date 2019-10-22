@@ -39,4 +39,11 @@ public class Mail {
         this.body = body;
         return this;
     }
+
+
+    @Override
+    public String toString()
+    {
+        return subject+ " - "+body;
+    }
 }

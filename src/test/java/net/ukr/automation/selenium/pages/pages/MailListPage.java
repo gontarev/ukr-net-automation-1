@@ -1,5 +1,6 @@
 package net.ukr.automation.selenium.pages.pages;
 
+import io.qameta.allure.Step;
 import net.ukr.automation.selenium.pages.data.Mail;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -41,23 +42,24 @@ public class MailListPage extends Page {
         driver.findElement(By.linkText("Видалити")).click();
     }
 
-    public void cleanUpDeletedFolder()
+    @Step
+   public void cleanUpDeletedFolder()
     {
         wait.until(elementToBeClickable(selectAllChkBox)).click();
         wait.until(elementToBeClickable(By.linkText("Видалити назавжди"))).click();
     }
 
-    public boolean isDeletedFolderEmpty()
+    @Step public boolean isDeletedFolderEmpty()
     {
         return wait.until(elementToBeClickable(listArea)).getText().equals("В цій папці немає листів\nВи можете створити фільтр для автоматичного переміщення листів у цю папку");
     }
 
-    public void cleanUpFolder() {
+    @Step  public void cleanUpFolder() {
         wait.until(elementToBeClickable(selectAllChkBox)).click();
         wait.until(elementToBeClickable(By.linkText("Видалити"))).click();
     }
 
-    public boolean isFolderEmpty() {
+    @Step  public boolean isFolderEmpty() {
         return wait.until(elementToBeClickable(listArea)).getText().equals("В цій папці немає листів");
     }
 }

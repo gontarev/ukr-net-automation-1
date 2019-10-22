@@ -1,23 +1,27 @@
 package net.ukr.automation.selenium.pages;
 
 import net.ukr.automation.selenium.pages.app.MailApplication;
+import net.ukr.automation.selenium.utils.TestRules;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Rule;
 
 public class BaseTest {
-    public static ThreadLocal<MailApplication> tlApp = new ThreadLocal<>();
-    public MailApplication app;
 
-    @Before
-    public void start() {
-        if (tlApp.get() != null) {
-            app = tlApp.get();
-            return;
-        }
+    static MailApplication app;
 
+    @Rule
+    public TestRules testRules = new TestRules(app.getDriver());
+
+    @BeforeClass
+    public static void startApp() {
         app = new MailApplication();
-        tlApp.set(app);
+    }
 
-        Runtime.getRuntime().addShutdownHook(
-                new Thread(() -> { app.quit(); app = null; }));
+    @AfterClass
+    public static void stopApp()
+    {
+        app.quit();
     }
 }
