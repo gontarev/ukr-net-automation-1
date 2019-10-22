@@ -3,7 +3,6 @@ package net.ukr.automation.selenium.pages;
 import net.ukr.automation.selenium.pages.app.MailApplication;
 import net.ukr.automation.selenium.utils.TestRules;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 
