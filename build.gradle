@@ -20,6 +20,7 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -33,6 +34,8 @@ dependencies {
 
     testImplementation 'com.codeborne:selenide:5.4.1'
     testImplementation 'io.cucumber:cucumber-java:4.4.0'
+
+    testImplementation 'com.github.appium:java-client:7.2.0'
 }
 
 allure {
