@@ -33,7 +33,7 @@ public class FirstAndroidTest {
         dc.setCapability("appActivity", "com.android.calculator2.Calculator");
 
 
-        URL serverURL = new URL("http://127.0.0.1:4723/wd/hub");
+        URL serverURL = new URL("http://172.22.68.28:4723/wd/hub");
 
         driver = new AndroidDriver<>(serverURL, dc);
         wait = new WebDriverWait(driver, 4);
