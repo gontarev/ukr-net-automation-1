@@ -1,1 +1,4 @@
 rootProject.name = 'ukr-net-automation'
+
+include 'ukr-net-java'
+include 'ukr-net-groovy'
