@@ -1,6 +1,5 @@
 package ukr.net.groovy
 
-import com.google.gson.Gson
 import io.restassured.RestAssured
 import io.restassured.http.ContentType
 import org.junit.Test
@@ -9,10 +8,6 @@ import static io.restassured.RestAssured.given
 import static io.restassured.RestAssured.when
 
 class ChromeDriverTest {
-
-    Url url = new Url();
-    DesiredCapabilities capBody = new DesiredCapabilities("chrome")
-    Gson gs = new Gson();
 
 
     @Test
@@ -25,18 +20,18 @@ class ChromeDriverTest {
 
         def res = given().
                 contentType(ContentType.JSON).
-                body(capBody).
+                body(new DesiredCapabilities("chrome")).
                 // body(StringBodies.getCapabilitiesBody("chrome")).
                 when().
                 post("/session");
 
-        res.print()
+
         def sessionId = res.getBody().jsonPath().get("sessionId")
 
         given()
                 .contentType(ContentType.JSON)
                 .pathParam("id", sessionId)
-                .body(gs.toJson(url))
+                .body(new Url("https://mail.ukr.net"))
                 .when()
                 .post("/session/{id}/url").then().statusCode(200);
 

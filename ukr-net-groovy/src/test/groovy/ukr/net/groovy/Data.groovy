@@ -3,7 +3,11 @@ package ukr.net.groovy
 import com.google.gson.annotations.SerializedName
 
 class Url {
-    String url = "https://mail.ukr.net";
+    String url
+
+    Url(String url) {
+        this.url = url
+    }
 }
 
 class DesiredCapabilities {
@@ -37,8 +41,7 @@ class ChromeOptions {
         extensions = []
     }
 
-    ChromeOptions(String[] args,String[] extensions)
-    {
+    ChromeOptions(String[] args, String[] extensions) {
         this.args = args
         this.extensions = extensions
     }
