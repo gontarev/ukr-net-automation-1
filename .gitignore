@@ -6,6 +6,7 @@
 out
 build
 
+gradle-wrapper.properties
 
 # Log file
 *.log
