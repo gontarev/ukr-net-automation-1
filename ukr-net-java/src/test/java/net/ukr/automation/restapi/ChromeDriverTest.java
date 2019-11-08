@@ -1,4 +1,4 @@
-package net.ukr.automation.selenium.restapi;
+package net.ukr.automation.restapi;
 
 import com.google.gson.Gson;
 import io.restassured.RestAssured;

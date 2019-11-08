@@ -2,6 +2,7 @@ package net.ukr.automation.selenium.session11.steps;
 
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,6 +16,7 @@ public class MyStepdefs {
 
     @Given("^Google search is opened in my browser$")
     public void googleSearchIsOpenInMyBrowser() throws Throwable {
+        Configuration.driverManagerEnabled = false;
         open("http://www.google.com");
     }
 

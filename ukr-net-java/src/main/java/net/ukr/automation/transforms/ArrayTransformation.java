@@ -64,7 +64,7 @@ public class ArrayTransformation {
     public int[] transform2(int[] arrayToSort) {
 
         for (int i = 0; i < arrayToSort.length; i++) {
-            if (!(0 == arrayToSort[i] % 2)) {//Если текущий элемент нечетный - меняем его местами с ближайшим следующим четным
+            if (!(0 == arrayToSort[i] % 2)) {
                 for (int j = i; j < arrayToSort.length; j++) {
                     if (0 == arrayToSort[j] % 2) {
                         int buffer = arrayToSort[i];
@@ -82,27 +82,27 @@ public class ArrayTransformation {
 
         int[] array3 = new int[10];
         int[] array4 = new int[10];
-        // показываем иизначальный массив
+
         System.out.println("Here is a second array: " + Arrays.toString(array2));
 
-        //берём вспомогательные переменные - первая ячейка будущего массива, и последняя
+
         int count1 = 0;
         int count2 = 9;
-        // перебираем элементы изначального массива
+
         for (int i = 0; i < array2.length; i++) {
-            // если остаток от деления равен нулю, то это значение занимает первую ячейку
+
             if ((array2[i] % 2) == 0) {
                 array3[count1] = array2[i];
                 count1++;
             }
-            // если остаток от деления равен единице (условие - иначе) то занимает последнюю ячейку
+
             else {
                 array3[count2] = array2[i];
                 count2--;
             }
 
         }
-        //берём ещё раз вспомогательные переменные, чтобы отсортировать нечётные числа в порядок, указанный вначале
+
         int count3 = 0;
         int count4 = 9;
         for (int j = 0; j < array4.length; j++) {
@@ -122,14 +122,11 @@ public class ArrayTransformation {
 
         System.out.println("\nThe default array: " + Arrays.toString(mySortArray) + ".");
 
-        //об'яляємо новий буферних масива для відсортованих елементів та виділяємо для нього пам'ять
         int[] mySortArrayBuf = new int[mySortArray.length];
 
-        //об'являємо буферні зміні, для формування буферного масива
         int pairPossition1 = 0;
         int oddPossition1 = mySortArray.length - 1;
 
-        //Виконуємо сортування парних чисел й переміщуємо їх на початок масиву
         for (int i = 0; i < mySortArray.length; i++) {
             if (mySortArray[i] % 2 == 0) {
                 mySortArrayBuf[pairPossition1] = mySortArray[i];
@@ -140,11 +137,10 @@ public class ArrayTransformation {
             }
         }
 
-        //об'являємо зміні, для формування відсортованого масиву масива
         int pairPossition2 = 0;
         int oddPossition2 = mySortArray.length - 1;
 
-        //Виконуємо сортування непарних чисел й зміщуємо їх за парні числа
+
         for (int j = 0; j < mySortArray.length; j++) {
             if (mySortArrayBuf[j] % 2 == 0) {
                 mySortArray[pairPossition2] = mySortArrayBuf[j];
