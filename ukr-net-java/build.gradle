@@ -99,6 +99,7 @@ allure {
 
 test {
     useJUnit()
+    systemProperties System.properties
    // maxParallelForks = 4
 }
 
