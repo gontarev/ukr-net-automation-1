@@ -68,7 +68,7 @@ public class PetStoreTest {
                 .contentType(ContentType.JSON)
                 .get("/pet/" + testPetId)
                 .then()
-                .body("message", equalTo("Hahahah"));
+                .body("message", equalTo("Pet not found"));
     }
 
 
