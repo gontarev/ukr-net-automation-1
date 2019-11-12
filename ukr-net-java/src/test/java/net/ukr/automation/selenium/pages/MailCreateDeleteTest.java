@@ -17,7 +17,7 @@ public class MailCreateDeleteTest extends BaseTest {
 
     @Before
     public void setUp() {
-        user = new User("user", "password");
+        user = new User(config.getUserName(), config.getUserPassword());
         mail = new Mail(user).setSubject("Demo Letter").setBody("Hi There");
     }
 
