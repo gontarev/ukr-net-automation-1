@@ -28,7 +28,7 @@ pipeline{
                     ])
                         }
 
-                     junit 'ukr-net-java/build/test-results/test/*.xml'
+                    // junit 'ukr-net-java/build/test-results/test/*.xml'
 
                      }
             }
