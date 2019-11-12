@@ -34,6 +34,31 @@ pipeline{
                      }
             }
        }
+stage('MailTest') {
+       when {
+                branch 'develop'
+            }
+            steps {
+                sh 'chmod 777 gradlew'
+                sh './gradlew clean :ukr-net-java:test --tests net.ukr.automation.ArrayTransformationTest'
+            }
+            post {
+            always{
+                   script {
+                    allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'ukr-net-java/build/allure-results']]
+                    ])
+                        }
+
+                    // junit 'ukr-net-java/build/test-results/test/*.xml'
+
+                     }
+            }
+       }
 
   }
 }
