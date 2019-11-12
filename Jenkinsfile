@@ -14,6 +14,7 @@ pipeline{
                 branch 'master'
             }
             steps {
+                sh 'chmod 777 gradlew'
                 sh './gradlew clean :ukr-net-java:test --tests net.ukr.automation.selenium.pages.MailCreateDeleteTest -Dukr.net.user=user -Dukr.net.password=password'
             }
             post {
