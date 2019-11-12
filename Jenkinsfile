@@ -4,13 +4,13 @@ pipeline{
   stages {
 
        stage('preparation') {
-           echo 'Preparing to start'
+            steps {
+               echo "Test Started"
+            }
        }
 
        stage('MailTest') {
-       when {
-                branch 'master'
-            }
+
             steps {
                 sh 'chmod 777 gradlew'
                 sh './gradlew clean :ukr-net-java:test --tests net.ukr.automation.selenium.pages.MailCreateDeleteTest -Dukr.net.user=user -Dukr.net.password=password'
@@ -32,6 +32,12 @@ pipeline{
                      }
             }
        }
+
+       stage('finish') {
+                   steps {
+                      echo "Test ended"
+                   }
+              }
 
 
   }
