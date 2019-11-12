@@ -96,7 +96,7 @@ allure {
 
 test {
     useJUnit()
-    maxParallelForks = 4
+   // maxParallelForks = 4
 }
 
 //compileTestJava.dependsOn.remove("assertjGen")

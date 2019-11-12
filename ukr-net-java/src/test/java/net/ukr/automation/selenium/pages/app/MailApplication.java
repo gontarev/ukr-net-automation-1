@@ -7,8 +7,11 @@ import net.ukr.automation.selenium.pages.pages.LoginPage;
 import net.ukr.automation.selenium.pages.pages.MailComposePage;
 import net.ukr.automation.selenium.pages.pages.MailListPage;
 import net.ukr.automation.selenium.pages.pages.SideBarPage;
+import net.ukr.automation.selenium.utils.DriverProvider;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+
+import java.net.MalformedURLException;
 
 public class MailApplication {
 
@@ -19,7 +22,11 @@ public class MailApplication {
     private MailListPage mailList;
 
     public MailApplication() {
-        driver = new ChromeDriver();
+        try {
+            driver = new DriverProvider().getDriver();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         loginPage = new LoginPage(driver);
         composePage = new MailComposePage(driver);
         sideBar = new SideBarPage(driver);
