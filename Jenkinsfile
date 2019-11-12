@@ -14,7 +14,7 @@ pipeline{
                 branch 'master'
             }
             steps {
-                sh 'gradlew clean :ukr-net-java:test --tests net.ukr.automation.selenium.pages.MailCreateDeleteTest -Dukr.net.user=user -Dukr.net.password=password'
+                sh './gradlew clean :ukr-net-java:test --tests net.ukr.automation.selenium.pages.MailCreateDeleteTest -Dukr.net.user=user -Dukr.net.password=password'
             }
             post {
             always{
