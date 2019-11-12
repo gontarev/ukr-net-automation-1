@@ -13,4 +13,10 @@ public interface TestProperties {
     @Property("ukr.net.password")
     String getUserPassword();
 
+    @Property("selenium.remote")
+    Boolean getIsRemoteRun();
+
+    @Property("selenium.browser")
+    Browser getBrowser();
+
 }
