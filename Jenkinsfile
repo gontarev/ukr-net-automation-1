@@ -24,11 +24,11 @@ pipeline{
                     jdk: '',
                     properties: [],
                     reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'allure-results']]
+                    results: [[path: 'ukr-net-java/build/allure-results']]
                     ])
                         }
 
-                     junit 'reports/*.xml'
+                     junit 'ukr-net-java/build/test-results/test/*.xml'
 
                      }
             }
