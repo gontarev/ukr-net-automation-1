@@ -5,13 +5,13 @@ buildscript {
     }
     dependencies {
         classpath "io.qameta.allure:allure-gradle:2.8.0"
-        classpath "gradle.plugin.com.github.opengl-8080:assertjGen-gradle-plugin:2.0.0"
+       // classpath "gradle.plugin.com.github.opengl-8080:assertjGen-gradle-plugin:2.0.0"
     }
 }
 
 plugins {
     id 'java'
-    id 'org.hidetake.swagger.generator' version '2.18.1'
+ //   id 'org.hidetake.swagger.generator' version '2.18.1'
 }
 
 apply plugin: 'io.qameta.allure'
@@ -55,16 +55,16 @@ dependencies {
 
 }
 
-swaggerSources {
-    petstore {
-        inputFile = file('swagger.json')
-
-        code {
-            language = 'java'
-            configFile = file('config.json')
-        }
-    }
-}
+//swaggerSources {
+//    petstore {
+//        inputFile = file('swagger.json')
+//
+//        code {
+//            language = 'java'
+//            configFile = file('config.json')
+//        }
+//    }
+//}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '5.1.1'
