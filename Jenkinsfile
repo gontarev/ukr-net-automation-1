@@ -33,10 +33,6 @@ pipeline{
             }
        }
 
-       stage('Finish') {
-           echo 'All done'
-       }
-
 
   }
 }
