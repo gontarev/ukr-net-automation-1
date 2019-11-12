@@ -4,9 +4,7 @@ pipeline{
   stages {
 
        stage('preparation') {
-            steps {
-               echo "Test Started"
-            }
+           echo 'Preparing to start'
        }
 
        stage('MailTest') {
@@ -34,6 +32,11 @@ pipeline{
                      }
             }
        }
+
+       stage('Finish') {
+           echo 'All done'
+       }
+
 
   }
 }
