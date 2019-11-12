@@ -34,7 +34,7 @@ pipeline{
                      }
             }
        }
-stage('MailTest') {
+stage('Develop Tests') {
        when {
                 branch 'develop'
             }
