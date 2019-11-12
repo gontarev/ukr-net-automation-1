@@ -1,0 +1,89 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.8.0"
+       // classpath "gradle.plugin.com.github.opengl-8080:assertjGen-gradle-plugin:2.0.0"
+    }
+}
+
+plugins {
+    id 'java'
+ //   id 'org.hidetake.swagger.generator' version '2.18.1'
+}
+
+apply plugin: 'io.qameta.allure'
+//apply plugin: "com.github.opengl-BOBO.assertjGen2"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'io.rest-assured:rest-assured:4.1.2'
+    implementation 'io.rest-assured:json-schema-validator:4.1.2'
+    implementation group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'com.tngtech.java', name: 'junit-dataprovider', version: '1.12.0'
+    implementation 'org.assertj:assertj-core:3.8.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.0'
+    implementation group: 'io.gsonfire', name: 'gson-fire', version: '1.8.3'
+    implementation group: 'org.threeten', name: 'threetenbp', version: '1.4.0'
+    implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.24'
+    implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+    implementation group: 'com.squareup.okio', name: 'okio', version: '2.4.1'
+
+    // swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.2'             // Swagger Codegen V2
+
+}
+
+//swaggerSources {
+//    petstore {
+//        inputFile = file('swagger.json')
+//
+//        code {
+//            language = 'java'
+//            configFile = file('config.json')
+//        }
+//    }
+//}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '5.1.1'
+}
+
+//assertjGen {
+//    //packages = ['io.swagger.petstore.models']
+//    classes  = ['io.swagger.petstore.models.Pet']
+//    generateAssertionsForAllFields = false
+//    //package path for converting it to following outputDir
+//    targetDir  = 'src/main/java/'
+//    //dir were will be located assertions for entities class
+//    entryPointClassPackage = 'io.swagger.petstore.asserts'
+//    generateAssertionsInPackage = 'io.swagger.petstore.asserts'
+//    generateAssertions = true
+//    generateBddAssertions = false
+//    generateSoftAssertions = false
+//    generateJUnitSoftAssertions = false
+//
+//}
+
+allure {
+    autoconfigure = true
+    version = '2.13.0'
+    useJUnit4 {
+        version = '2.13.0'
+    }
+}
+
+test {
+    useJUnit()
+    systemProperties System.properties
+   // maxParallelForks = 4
+}
+
+//compileTestJava.dependsOn.remove("assertjGen")
